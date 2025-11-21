@@ -1,0 +1,73 @@
+{
+  "app": {
+    "title": "Anti Filter"
+  },
+  "navigation": {
+    "home": "Home",
+    "history": "History",
+    "favorites": "Favorites",
+    "profile": "Profile"
+  },
+  "home": {
+    "title": "Anti-Filtr",
+    "uploadPhoto": "Upload photo",
+    "seeMore": "see more",
+    "madeWithAI": "Made with AI",
+    "partialRetouch": "Partial retouch",
+    "proVersion": "pro version"
+  },
+  "settings": {
+    "title": "Settings",
+    "language": "Language",
+    "spanish": "Spanish",
+    "english": "English",
+    "deleteAccount": "Delete account",
+    "deleteAccountConfirm": "We're sorry to see you go",
+    "deleteAccountWarning": "If you delete your account, you will lose all your history and won't be able to recover it. Do you want to continue?",
+    "cancel": "No, go back",
+    "delete": "Delete permanently",
+    "accountDeleted": "Account deleted successfully",
+    "back": "Back"
+  },
+  "profile": {
+    "title": "Profile",
+    "user": "User",
+    "settings": "Settings",
+    "help": "Help",
+    "about": "About",
+    "logout": "Sign Out",
+    "notAuthenticated": "Not authenticated"
+  },
+  "auth": {
+    "login": "Login",
+    "loginWithGoogle": "Continue with Google",
+    "email": "Email",
+    "password": "Password",
+    "forgotPassword": "Forgot password?",
+    "noAccount": "Don't have an account?",
+    "signUp": "Sign Up"
+  },
+  "favorites": {
+    "title": "Favorites"
+  },
+  "history": {
+    "title": "History"
+  },
+  "onboard": {
+    "skip": "Skip",
+    "next": "Next",
+    "getStarted": "Get Started",
+    "slide1": {
+      "title": "Welcome to Anti Filter",
+      "description": "Remove filters from your photos easily and quickly"
+    },
+    "slide2": {
+      "title": "Professional Results",
+      "description": "Get filter-free images with professional quality"
+    },
+    "slide3": {
+      "title": "Fast and Secure",
+      "description": "Process your photos securely"
+    }
+  }
+}

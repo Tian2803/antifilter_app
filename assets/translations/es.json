@@ -1,0 +1,73 @@
+{
+  "app": {
+    "title": "Anti Filter"
+  },
+  "navigation": {
+    "home": "Home",
+    "history": "Historial",
+    "favorites": "Favoritos",
+    "profile": "Perfil"
+  },
+  "home": {
+    "title": "Anti-Filtr",
+    "uploadPhoto": "Subir foto",
+    "seeMore": "ver más",
+    "madeWithAI": "Hecho con IA",
+    "partialRetouch": "Retoque parcial",
+    "proVersion": "version pro"
+  },
+  "settings": {
+    "title": "Configuración",
+    "language": "Idioma",
+    "spanish": "Español",
+    "english": "Inglés",
+    "deleteAccount": "Eliminar cuenta",
+    "deleteAccountConfirm": "Lamentamos que quieras irte",
+    "deleteAccountWarning": "Si eliminas tu cuenta, perderás todo tu historial y no podrás recuperarlo. ¿Deseas continuar?",
+    "cancel": "Mejor no, regresar",
+    "delete": "Eliminar definitivamente",
+    "accountDeleted": "Cuenta eliminada exitosamente",
+    "back": "Regresar"
+  },
+  "profile": {
+    "title": "Profile",
+    "user": "Usuario",
+    "settings": "Configuración",
+    "help": "Ayuda",
+    "about": "Acerca de",
+    "logout": "Cerrar Sesión",
+    "notAuthenticated": "No autenticado"
+  },
+  "auth": {
+    "login": "Iniciar Sesión",
+    "loginWithGoogle": "Continuar con Google",
+    "email": "Correo electrónico",
+    "password": "Contraseña",
+    "forgotPassword": "¿Olvidaste tu contraseña?",
+    "noAccount": "¿No tienes cuenta?",
+    "signUp": "Regístrate"
+  },
+  "favorites": {
+    "title": "Favoritos"
+  },
+  "history": {
+    "title": "Historial"
+  },
+  "onboard": {
+    "skip": "Saltar",
+    "next": "Siguiente",
+    "getStarted": "Comenzar",
+    "slide1": {
+      "title": "Bienvenido a Anti Filter",
+      "description": "Elimina filtros de tus fotos de manera fácil y rápida"
+    },
+    "slide2": {
+      "title": "Resultados Profesionales",
+      "description": "Obtén imágenes sin filtros con calidad profesional"
+    },
+    "slide3": {
+      "title": "Rápido y Seguro",
+      "description": "Procesa tus fotos de forma segura"
+    }
+  }
+}
