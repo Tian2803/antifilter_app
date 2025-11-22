@@ -33,30 +33,28 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   @override
   Future<UserModel> signInWithGoogle() async {
     try {
-      // Verificar si la plataforma soporta authenticate
+      // Verifica si la plataforma soporta authenticate
       if (!_googleSignIn.supportsAuthenticate()) {
         throw const AuthException(
           'Google Sign In no soporta autenticación en esta plataforma',
         );
       }
 
-      // Disparar el flujo de autenticación
-      final GoogleSignInAccount? googleUser = await _googleSignIn.authenticate();
-      
-      if (googleUser == null) {
-        throw const AuthException('Inicio de sesión cancelado');
-      }
+      // Dispara el flujo de autenticación
+      final GoogleSignInAccount googleUser = await _googleSignIn.authenticate();
 
-      // Obtener los detalles de autenticación de la solicitud
-      final googleAuth = await googleUser.authentication;
+      // Obtiene los detalles de autenticación de la solicitud
+      final googleAuth = googleUser.authentication;
 
-      // Crear una nueva credencial con el idToken
+      // Crea una nueva credencial con el idToken
       final credential = GoogleAuthProvider.credential(
         idToken: googleAuth.idToken,
       );
 
-      // Iniciar sesión en Firebase
-      final userCredential = await _firebaseAuth.signInWithCredential(credential);
+      // Inicia sesión en Firebase
+      final userCredential = await _firebaseAuth.signInWithCredential(
+        credential,
+      );
       final user = userCredential.user;
 
       if (user == null) {
@@ -84,10 +82,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   @override
   Future<void> signOut() async {
     try {
-      await Future.wait([
-        _firebaseAuth.signOut(),
-        _googleSignIn.disconnect(),
-      ]);
+      await Future.wait([_firebaseAuth.signOut(), _googleSignIn.disconnect()]);
     } catch (e) {
       throw const AuthException('Failed to sign out');
     }

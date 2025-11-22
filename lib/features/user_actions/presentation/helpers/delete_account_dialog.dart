@@ -80,30 +80,6 @@ class DeleteAccountDialog {
                           mainAxisAlignment: MainAxisAlignment.center,
                           crossAxisAlignment: CrossAxisAlignment.center,
                           children: [
-                            /* ElevatedButton(
-                              onPressed: state is AccountDeleting
-                                  ? null
-                                  : () {
-                                      context.read<UserActionsBloc>().add(const DeleteAccountEvent());
-                                    },
-                              style: ElevatedButton.styleFrom(
-                                backgroundColor: Colors.redAccent.shade200,
-                                foregroundColor: AppColors.white,
-                                shape: RoundedRectangleBorder(
-                                  borderRadius: BorderRadius.circular(2),
-                                ),
-                                fixedSize: const Size(190, 50),
-                              ),
-                              child: Text(
-                                'settings.delete'.tr(),
-                                style: const TextStyle(
-                                  fontWeight: FontWeight.w800,
-                                  fontSize: 17,
-                                  color: AppColors.white,
-                                ),
-                                textAlign: TextAlign.center,
-                              ),
-                            ), */
                             CustomButton(
                               onTap: state is AccountDeleting
                                   ? null

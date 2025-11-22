@@ -7,13 +7,11 @@ abstract class HomeEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class UploadPhotoEvent extends HomeEvent {
-  final String filePath;
+class LoadRecentPhotosEvent extends HomeEvent {
+  final int limit;
 
-  const UploadPhotoEvent(this.filePath);
+  const LoadRecentPhotosEvent({this.limit = 3});
 
   @override
-  List<Object> get props => [filePath];
+  List<Object> get props => [limit];
 }
-
-class LoadRecentPhotosEvent extends HomeEvent {}

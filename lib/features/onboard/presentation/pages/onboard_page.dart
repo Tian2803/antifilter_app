@@ -3,6 +3,7 @@ import 'package:antifilter_app/features/onboard/domain/entities/onboard_item.dar
 import 'package:antifilter_app/features/onboard/presentation/widgets/onboard_card.dart';
 import 'package:antifilter_app/shared/themes/app_colors.dart';
 import 'package:antifilter_app/shared/widgets/buttons/custom_button.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -57,9 +58,9 @@ class _OnboardPageState extends State<OnboardPage> {
               alignment: Alignment.topRight,
               child: TextButton(
                 onPressed: _goToLogin,
-                child: const Text(
-                  'Omitir',
-                  style: TextStyle(color: AppColors.pacificCyan),
+                child: Text(
+                  'onboard.skip'.tr(),
+                  style: const TextStyle(color: AppColors.pacificCyan),
                 ),
               ),
             ),
@@ -89,8 +90,8 @@ class _OnboardPageState extends State<OnboardPage> {
               child: CustomButton(
                 onTap: _nextPage,
                 text: _currentPage == _onboardItems.length - 1
-                    ? 'Comenzar'
-                    : 'Siguiente',
+                    ? 'onboard.getStarted'.tr()
+                    : 'onboard.next'.tr(),
                 fontWeight: FontWeight.w700,
                 size: 20,
                 height: 56,

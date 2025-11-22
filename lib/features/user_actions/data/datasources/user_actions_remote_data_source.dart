@@ -1,4 +1,5 @@
 import 'dart:developer';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import '../../../../core/exceptions/exceptions.dart';
 
@@ -16,25 +17,22 @@ class UserActionsRemoteDataSourceImpl implements UserActionsRemoteDataSource {
     try {
       final user = _firebaseAuth.currentUser;
       log('Current user: ${user?.email}');
-      
+
       if (user == null) {
-        throw const AuthException('No hay usuario autenticado');
+        throw AuthException('userActions.notAuthenticated'.tr());
       }
-      
-      log('Attempting to delete user account...');
+
       await user.delete();
-      log('User account deleted successfully');
     } on FirebaseAuthException catch (e) {
       log('FirebaseAuthException: ${e.code} - ${e.message}');
       if (e.code == 'requires-recent-login') {
-        throw const AuthException(
-          'Por seguridad, debes volver a iniciar sesión antes de eliminar tu cuenta',
-        );
+        throw AuthException('userActions.recentLoginRequired'.tr());
       }
-      throw AuthException(e.message ?? 'Error al eliminar cuenta');
+      throw AuthException(e.message ?? 'userActions.errorDeletingAccount'.tr());
     } catch (e) {
-      log('Unexpected error: $e');
-      throw AuthException('Error inesperado: $e');
+      throw AuthException(
+        'userActions.unexpectedError'.tr(args: [e.toString()]),
+      );
     }
   }
 }

@@ -3,27 +3,16 @@ import 'package:equatable/equatable.dart';
 class PhotoEntity extends Equatable {
   final String id;
   final String userId;
-  final String originalUrl;
-  final String? processedUrl;
+  final String photoUrl;
   final DateTime createdAt;
-  final bool isFavorite;
 
   const PhotoEntity({
     required this.id,
     required this.userId,
-    required this.originalUrl,
-    this.processedUrl,
+    required this.photoUrl,
     required this.createdAt,
-    this.isFavorite = false,
   });
 
   @override
-  List<Object?> get props => [
-        id,
-        userId,
-        originalUrl,
-        processedUrl,
-        createdAt,
-        isFavorite,
-      ];
+  List<Object?> get props => [id, userId, photoUrl, createdAt];
 }

@@ -1,6 +1,6 @@
 {
   "app": {
-    "title": "Anti Filter"
+    "title": "ZEROFILTER"
   },
   "navigation": {
     "home": "Home",
@@ -9,12 +9,13 @@
     "profile": "Perfil"
   },
   "home": {
-    "title": "Anti-Filtr",
+    "title": "ZEROFILTER",
     "uploadPhoto": "Subir foto",
-    "seeMore": "ver más",
+    "historyTitle": "Historial",
+    "seeMore": "Ver más",
     "madeWithAI": "Hecho con IA",
     "partialRetouch": "Retoque parcial",
-    "proVersion": "version pro"
+    "noPhotos": "No hay fotos en el historial"
   },
   "settings": {
     "title": "Configuración",
@@ -30,7 +31,7 @@
     "back": "Regresar"
   },
   "profile": {
-    "title": "Profile",
+    "title": "Perfil",
     "user": "Usuario",
     "settings": "Configuración",
     "help": "Ayuda",
@@ -43,6 +44,7 @@
     "loginWithGoogle": "Continuar con Google",
     "email": "Correo electrónico",
     "password": "Contraseña",
+    "filterText": "La realidad sin filtros",
     "forgotPassword": "¿Olvidaste tu contraseña?",
     "noAccount": "¿No tienes cuenta?",
     "signUp": "Regístrate"
@@ -50,8 +52,56 @@
   "favorites": {
     "title": "Favoritos"
   },
+  "userActions":{
+    "notAuthenticated": "Usuario no autenticado",
+    "recentLoginRequired": "Por seguridad, debes volver a iniciar sesión antes de eliminar tu cuenta",
+    "errorDeletingAccount": "No se logró eliminar la cuenta",
+    "unexpectedError": "Error inesperado: {error}"
+  },
   "history": {
-    "title": "Historial"
+    "title": "Historial",
+    "noPhotos": "No hay fotos en el historial",
+    "today": "Hoy",
+    "yesterday": "Ayer",
+    "daysAgo": "Hace {days} días",
+    "yearAgo": "Hace 1 año",
+    "yearsAgo": "Hace {years} años",
+    "months": {
+      "january": "Enero",
+      "february": "Febrero",
+      "march": "Marzo",
+      "april": "Abril",
+      "may": "Mayo",
+      "june": "Junio",
+      "july": "Julio",
+      "august": "Agosto",
+      "september": "Septiembre",
+      "october": "Octubre",
+      "november": "Noviembre",
+      "december": "Diciembre"
+    },
+    "dateFormat": "{day} de {month} de {year}",
+    "todayAt": "Hoy a las {time}",
+    "yesterdayAt": "Ayer a las {time}"
+  },
+  "photoDetail": {
+    "title": "Detalle",
+    "errorLoading": "Error al cargar la imagen",
+    "share": "Compartir",
+    "download": "Descargar",
+    "delete": "Eliminar"
+  },
+  "photoEditor": {
+    "title": "Editor de Fotos",
+    "uploadPhoto": "Subir foto",
+    "removeFilters": "Quitar filtros",
+    "clearTitle": "Quitar foto",
+    "clearContent": "¿Estás seguro de que deseas quitar esta foto?",
+    "clearCancel": "Cancelar",
+    "clearConfirm": "Quitar",
+    "saveFirst": "Primero debes guardar la foto presionando \"Quitar filtros\"",
+    "saveFavorites": "Foto guardada en favoritos",
+    "saveHistory": "Foto guardada en el historial"
   },
   "onboard": {
     "skip": "Saltar",

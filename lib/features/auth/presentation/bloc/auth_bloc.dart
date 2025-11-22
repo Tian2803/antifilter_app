@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:developer';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import '../../domain/entities/user_entity.dart';
@@ -45,8 +46,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
     try {
       await initializeAuth();
     } catch (e) {
-      // No emitir error, solo registrar
-      print('Error initializing auth: $e');
+      log('Error initializing auth: $e');
     }
   }
 

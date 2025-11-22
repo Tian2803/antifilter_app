@@ -1,6 +1,6 @@
 {
   "app": {
-    "title": "Anti Filter"
+    "title": "ZEROFILTER"
   },
   "navigation": {
     "home": "Home",
@@ -9,12 +9,13 @@
     "profile": "Profile"
   },
   "home": {
-    "title": "Anti-Filtr",
+    "title": "ZEROFILTER",
     "uploadPhoto": "Upload photo",
-    "seeMore": "see more",
+    "historyTitle": "History",
+    "seeMore": "See more",
     "madeWithAI": "Made with AI",
     "partialRetouch": "Partial retouch",
-    "proVersion": "pro version"
+    "noPhotos": "No photos in history"
   },
   "settings": {
     "title": "Settings",
@@ -43,6 +44,7 @@
     "loginWithGoogle": "Continue with Google",
     "email": "Email",
     "password": "Password",
+    "filterText": "The reality without filters",
     "forgotPassword": "Forgot password?",
     "noAccount": "Don't have an account?",
     "signUp": "Sign Up"
@@ -50,8 +52,56 @@
   "favorites": {
     "title": "Favorites"
   },
+  "userActions":{
+    "notAuthenticated": "No authenticated user",
+    "recentLoginRequired": "For security, you must log in again before deleting your account",
+    "errorDeletingAccount": "Failed to delete account",
+    "unexpectedError": "Unexpected error: {error}"
+  },
   "history": {
-    "title": "History"
+    "title": "History",
+    "noPhotos": "No photos in history",
+    "today": "Today",
+    "yesterday": "Yesterday",
+    "daysAgo": "{days} days ago",
+    "yearAgo": "1 year ago",
+    "yearsAgo": "{years} years ago",
+    "months": {
+      "january": "January",
+      "february": "February",
+      "march": "March",
+      "april": "April",
+      "may": "May",
+      "june": "June",
+      "july": "July",
+      "august": "August",
+      "september": "September",
+      "october": "October",
+      "november": "November",
+      "december": "December"
+    },
+    "dateFormat": "{month} {day}, {year}",
+    "todayAt": "Today at {time}",
+    "yesterdayAt": "Yesterday at {time}"
+  },
+  "photoDetail": {
+    "title": "Detail",
+    "errorLoading": "Error loading image",
+    "share": "Share",
+    "download": "Download",
+    "delete": "Delete"
+  },
+  "photoEditor": {
+    "title": "Photo Editor",
+    "uploadPhoto": "Upload photo",
+    "removeFilters": "Remove filters",
+    "clearTitle": "Remove photo",
+    "clearContent": "Are you sure you want to remove this photo?",
+    "clearCancel": "Cancel",
+    "clearConfirm": "Remove",
+    "saveFirst": "You must first save the photo by pressing \"Remove filters\"",
+    "saveFavorites": "Photo saved to favorites",
+    "saveHistory": "Photo saved to history"
   },
   "onboard": {
     "skip": "Skip",

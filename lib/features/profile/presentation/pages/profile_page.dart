@@ -14,6 +14,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: ValueKey(context.locale),
       body: BlocBuilder<AuthBloc, AuthState>(
         builder: (context, state) {
           if (state is Authenticated) {
@@ -29,7 +30,7 @@ class ProfilePage extends StatelessWidget {
                   ),
                   const SizedBox(height: 16),
                   Text(
-                    state.user.displayName ?? 'Usuario',
+                    state.user.displayName ?? 'User',
                     style: const TextStyle(
                       fontSize: 24,
                       fontWeight: FontWeight.w700,

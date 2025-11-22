@@ -1,6 +1,5 @@
 import '../entities/photo_entity.dart';
 
 abstract class HomeRepository {
-  Future<PhotoEntity> uploadPhoto(String filePath);
-  Future<List<PhotoEntity>> getRecentPhotos(String userId);
+  Future<List<PhotoEntity>> getRecentPhotos(int limit);
 }

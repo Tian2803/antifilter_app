@@ -1,7 +1,5 @@
-import 'dart:convert';
 import 'dart:io';
 import 'dart:developer';
-import 'package:http/http.dart' as http;
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:firebase_storage/firebase_storage.dart' as firebase_storage;
 import 'exceptions.dart';
@@ -112,11 +110,6 @@ class ExceptionHandler {
       );
     }
 
-    // RESPUESTAS HTTP NO EXITOSAS
-    if (error is http.Response) {
-      return _handleHttpError(error);
-    }
-
     // ERRORES DE FORMATO
     if (error is FormatException) {
       return const ParseException();
@@ -187,71 +180,5 @@ class ExceptionHandler {
           code: error.code,
         );
     }
-  }
-
-  static AppException _handleHttpError(http.Response response) {
-    final errorMessage = _extractErrorMessage(response.body);
-
-    switch (response.statusCode) {
-      case 400:
-        return BadRequestException(errorMessage);
-      case 401:
-        if (_isTokenExpiredError(response.body)) {
-          return TokenExpiredException(errorMessage);
-        }
-        return UnauthorizedException(errorMessage);
-      case 403:
-        return ForbiddenException(errorMessage);
-      case 404:
-        return NotFoundException(errorMessage);
-      case 405:
-        return MethodNotAllowedException(errorMessage);
-      case 409:
-        return ConflictException(errorMessage);
-      case 422:
-        return ValidationException(errorMessage);
-      case 429:
-        return TooManyRequestsException(errorMessage);
-      case 500:
-        return InternalServerException(errorMessage);
-      case 502:
-        return BadGatewayException(errorMessage);
-      case 503:
-        return ServiceUnavailableException(errorMessage);
-      case 504:
-        return GatewayTimeoutException(errorMessage);
-      default:
-        return ApiException(
-          errorMessage,
-          response.statusCode,
-          code: 'API_ERROR_${response.statusCode}',
-        );
-    }
-  }
-
-  static String _extractErrorMessage(String responseBody) {
-    try {
-      final Map<String, dynamic> data = jsonDecode(responseBody);
-
-      return data['message']?.toString() ??
-          data['error']?.toString() ??
-          'Error desconocido';
-    } catch (_) {
-      return 'Error en la respuesta del servidor';
-    }
-  }
-
-  static bool _isTokenExpiredError(String responseBody) {
-    try {
-      final error = jsonDecode(responseBody)['error'].toString().toLowerCase();
-      log("token $error");
-      if (error.contains('token inválido') ||
-          error.contains('token expirado')) {
-        return true;
-      }
-    } catch (_) {
-      return false;
-    }
-    return false;
   }
 }

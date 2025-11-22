@@ -1,5 +1,5 @@
 import 'package:antifilter_app/shared/themes/app_colors.dart';
-import 'package:flutter/cupertino.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -34,11 +34,11 @@ class LoginPage extends StatelessWidget {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
-                        'Anti-Filter',
-                        style: TextStyle(
+                      Text(
+                        'app.title'.tr(),
+                        style: const TextStyle(
                           fontSize: 24,
-                          fontWeight: FontWeight.bold,
+                          fontWeight: FontWeight.w700,
                         ),
                       ),
                       const SizedBox(width: 4),
@@ -74,9 +74,9 @@ class LoginPage extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(height: 30),
-                  const Text(
-                    'La realidad sin filtros',
-                    style: TextStyle(
+                  Text(
+                    'auth.filterText'.tr(),
+                    style: const TextStyle(
                       fontSize: 26,
                       fontWeight: FontWeight.w700,
                       color: AppColors.white,
@@ -99,17 +99,21 @@ class LoginPage extends StatelessWidget {
                         elevation: 2,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(28),
-                          side: BorderSide(color: AppColors.white.withAlpha((255 * 0.6).toInt())),
+                          side: BorderSide(
+                            color: AppColors.white.withAlpha(
+                              (255 * 0.6).toInt(),
+                            ),
+                          ),
                         ),
                       ),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Icon(FontAwesomeIcons.google, size: 25,),
+                          Icon(FontAwesomeIcons.google, size: 25),
                           const SizedBox(width: 15),
-                          const Text(
-                            'Continuar con Google',
-                            style: TextStyle(
+                          Text(
+                            'auth.loginWithGoogle'.tr(),
+                            style: const TextStyle(
                               fontSize: 18,
                               fontWeight: FontWeight.w700,
                             ),

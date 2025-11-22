@@ -1,23 +1,31 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../domain/entities/photo_entity.dart';
 
 class PhotoModel extends PhotoEntity {
   const PhotoModel({
     required super.id,
     required super.userId,
-    required super.originalUrl,
-    super.processedUrl,
+    required super.photoUrl,
     required super.createdAt,
-    super.isFavorite,
   });
 
   factory PhotoModel.fromJson(Map<String, dynamic> json) {
+    DateTime createdAtDateTime;
+    final createdAtValue = json['createdAt'];
+    
+    if (createdAtValue is Timestamp) {
+      createdAtDateTime = createdAtValue.toDate();
+    } else if (createdAtValue is String) {
+      createdAtDateTime = DateTime.parse(createdAtValue);
+    } else {
+      createdAtDateTime = DateTime.now();
+    }
+
     return PhotoModel(
       id: json['id'] as String,
       userId: json['userId'] as String,
-      originalUrl: json['originalUrl'] as String,
-      processedUrl: json['processedUrl'] as String?,
-      createdAt: DateTime.parse(json['createdAt'] as String),
-      isFavorite: json['isFavorite'] as bool? ?? false,
+      photoUrl: json['photoUrl'] as String,
+      createdAt: createdAtDateTime,
     );
   }
 
@@ -25,10 +33,8 @@ class PhotoModel extends PhotoEntity {
     return {
       'id': id,
       'userId': userId,
-      'originalUrl': originalUrl,
-      'processedUrl': processedUrl,
+      'photoUrl': photoUrl,
       'createdAt': createdAt.toIso8601String(),
-      'isFavorite': isFavorite,
     };
   }
 }

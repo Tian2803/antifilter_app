@@ -21,27 +21,23 @@ class OnboardCard extends StatelessWidget {
               color: item.color.withAlpha((255 * 0.1).toInt()),
               shape: BoxShape.circle,
             ),
-            child: Icon(
-              item.icon,
-              size: 100,
-              color: item.color,
-            ),
+            child: Icon(item.icon, size: 100, color: item.color),
           ),
           const SizedBox(height: 48),
           Text(
             item.title,
-            style: Theme.of(context).textTheme.headlineMedium?.copyWith(
-                  fontWeight: FontWeight.w700,
-                ),
+            style: Theme.of(
+              context,
+            ).textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.w700),
             textAlign: TextAlign.center,
           ),
           const SizedBox(height: 16),
           Text(
             item.description,
             style: Theme.of(context).textTheme.bodyLarge?.copyWith(
-                  color: AppColors.white.withAlpha((255 * 0.7).toInt()),
-                  fontWeight: FontWeight.w500
-                ),
+              color: AppColors.white.withAlpha((255 * 0.7).toInt()),
+              fontWeight: FontWeight.w500,
+            ),
             textAlign: TextAlign.center,
           ),
         ],

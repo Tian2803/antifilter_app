@@ -1,58 +1,38 @@
-import 'dart:io';
+import 'dart:developer';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase_storage/firebase_storage.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import '../../../../core/exceptions/exceptions.dart';
 import '../models/photo_model.dart';
 
 abstract class HomeRemoteDataSource {
-  Future<PhotoModel> uploadPhoto(String filePath, String userId);
-  Future<List<PhotoModel>> getRecentPhotos(String userId);
+  Future<List<PhotoModel>> getRecentPhotos(int limit);
 }
 
 class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
   final FirebaseFirestore _firestore;
-  final FirebaseStorage _storage;
+  final FirebaseAuth _auth;
 
-  HomeRemoteDataSourceImpl(this._firestore, this._storage);
-
-  @override
-  Future<PhotoModel> uploadPhoto(String filePath, String userId) async {
-    try {
-      final file = File(filePath);
-      final fileName = '${DateTime.now().millisecondsSinceEpoch}.jpg';
-      final ref = _storage.ref().child('photos/$userId/$fileName');
-
-      await ref.putFile(file);
-      final downloadUrl = await ref.getDownloadURL();
-
-      final photoData = {
-        'userId': userId,
-        'originalUrl': downloadUrl,
-        'processedUrl': null,
-        'createdAt': DateTime.now().toIso8601String(),
-        'isFavorite': false,
-      };
-
-      final docRef = await _firestore.collection('photos').add(photoData);
-      photoData['id'] = docRef.id;
-
-      return PhotoModel.fromJson(photoData);
-    } on FirebaseException catch (e) {
-      throw StorageException(e.message ?? 'Failed to upload photo');
-    } catch (e) {
-      throw StorageException('An error occurred while uploading');
-    }
-  }
+  HomeRemoteDataSourceImpl(this._firestore, this._auth);
 
   @override
-  Future<List<PhotoModel>> getRecentPhotos(String userId) async {
+  Future<List<PhotoModel>> getRecentPhotos(int limit) async {
     try {
+      final currentUser = _auth.currentUser;
+      if (currentUser == null) {
+        throw AuthException('User not authenticated');
+      }
+      
+      final String userId = currentUser.uid;
+      
       final querySnapshot = await _firestore
-          .collection('photos')
+          .collection('history')
           .where('userId', isEqualTo: userId)
           .orderBy('createdAt', descending: true)
-          .limit(10)
+          .limit(limit)
           .get();
+
+      log('Found ${querySnapshot.docs.length} photos');
 
       return querySnapshot.docs.map((doc) {
         final data = doc.data();
@@ -62,7 +42,7 @@ class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
     } on FirebaseException catch (e) {
       throw ServerException(e.message ?? 'Failed to get photos');
     } catch (e) {
-      throw ServerException('An error occurred while fetching photos');
+      throw ServerException('An error occurred while fetching photos: $e');
     }
   }
 }

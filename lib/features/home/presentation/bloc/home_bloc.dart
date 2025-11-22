@@ -1,32 +1,16 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import '../../domain/entities/photo_entity.dart';
-import '../../domain/usecases/upload_photo.dart';
+import '../../domain/usecases/get_recent_photos.dart';
 
 part 'home_event.dart';
 part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
-  final UploadPhoto uploadPhoto;
+  final GetRecentPhotos getRecentPhotos;
 
-  HomeBloc({
-    required this.uploadPhoto,
-  }) : super(HomeInitial()) {
-    on<UploadPhotoEvent>(_onUploadPhoto);
+  HomeBloc({required this.getRecentPhotos}) : super(HomeInitial()) {
     on<LoadRecentPhotosEvent>(_onLoadRecentPhotos);
-  }
-
-  Future<void> _onUploadPhoto(
-    UploadPhotoEvent event,
-    Emitter<HomeState> emit,
-  ) async {
-    emit(HomeLoading());
-    try {
-      final photo = await uploadPhoto(event.filePath);
-      emit(PhotoUploaded(photo));
-    } catch (e) {
-      emit(HomeError(e.toString()));
-    }
   }
 
   Future<void> _onLoadRecentPhotos(
@@ -35,8 +19,12 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   ) async {
     emit(HomeLoading());
     try {
-      // TODO: Implement loading recent photos
-      emit(const PhotosLoaded([]));
+      final photos = await getRecentPhotos(event.limit);
+      if (photos.isEmpty) {
+        emit(HomeEmpty());
+      } else {
+        emit(PhotosLoaded(photos));
+      }
     } catch (e) {
       emit(HomeError(e.toString()));
     }

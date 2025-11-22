@@ -9,20 +9,9 @@ class HomeRepositoryImpl implements HomeRepository {
   HomeRepositoryImpl(this.remoteDataSource);
 
   @override
-  Future<PhotoEntity> uploadPhoto(String filePath) async {
+  Future<List<PhotoEntity>> getRecentPhotos(int limit) async {
     try {
-      // TODO: Get userId from auth
-      final photo = await remoteDataSource.uploadPhoto(filePath, 'temp-user-id');
-      return photo;
-    } catch (e) {
-      throw ExceptionHandler.handleError(e);
-    }
-  }
-
-  @override
-  Future<List<PhotoEntity>> getRecentPhotos(String userId) async {
-    try {
-      final photos = await remoteDataSource.getRecentPhotos(userId);
+      final photos = await remoteDataSource.getRecentPhotos(limit);
       return photos;
     } catch (e) {
       throw ExceptionHandler.handleError(e);

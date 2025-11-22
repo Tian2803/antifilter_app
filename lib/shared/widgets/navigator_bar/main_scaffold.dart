@@ -31,10 +31,10 @@ class _MainScaffoldState extends State<MainScaffold> {
         context.go('/home');
         break;
       case 1:
-        context.go('/historial');
+        context.go('/history');
         break;
       case 2:
-        context.go('/favoritos');
+        context.go('/favorites');
         break;
       case 3:
         context.go('/profile');
@@ -52,9 +52,9 @@ class _MainScaffoldState extends State<MainScaffold> {
     final location = GoRouterState.of(context).uri.toString();
     if (location.startsWith('/home')) {
       _currentIndex = 0;
-    } else if (location.startsWith('/historial')) {
+    } else if (location.startsWith('/history')) {
       _currentIndex = 1;
-    } else if (location.startsWith('/favoritos')) {
+    } else if (location.startsWith('/favorites')) {
       _currentIndex = 2;
     } else if (location.startsWith('/profile')) {
       _currentIndex = 3;
@@ -65,14 +65,18 @@ class _MainScaffoldState extends State<MainScaffold> {
     final location = GoRouterState.of(context).uri.toString();
     if (location.startsWith('/home')) {
       return 'ZEROFILTER';
-    } else if (location.startsWith('/historial')) {
+    } else if (location.startsWith('/history')) {
       return 'history.title'.tr();
-    } else if (location.startsWith('/favoritos')) {
+    } else if (location.startsWith('/favorites')) {
       return 'favorites.title'.tr();
     } else if (location.startsWith('/profile')) {
       return 'profile.title'.tr();
     } else if (location.startsWith('/settings')) {
       return 'settings.title'.tr();
+    }else if(location.startsWith('/photo-detail')){
+      return 'photoDetail.title'.tr();
+    }else if(location.startsWith('/photo-editor')){
+      return 'photoEditor.title'.tr();
     }
     return 'ZEROFILTER';
   }
@@ -107,6 +111,7 @@ class _MainScaffoldState extends State<MainScaffold> {
       endDrawer: const CustomDrawer(),
       body: widget.child,
       bottomNavigationBar: BottomNavigationBar(
+        backgroundColor: AppColors.black,
         currentIndex: _currentIndex,
         iconSize: 30,
         selectedLabelStyle: const TextStyle(color: AppColors.white),
